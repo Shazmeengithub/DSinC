@@ -1,2 +1,2 @@
 # DSinC
-2nd Sem Data Structure codes in C Mumbai University
+3rd Sem Data Structure codes in C Mumbai University
