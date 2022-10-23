@@ -1,0 +1,120 @@
+//Concatenation
+#include <stdio.h>
+#include <stdlib.h>
+struct node *create1 (int);
+struct node *create2 (int);
+struct node *concatenate(struct node*,struct node *);
+void display(struct node*);
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+int main()
+{
+    int n1,n2;
+    struct node *head1,*head2;
+    printf("Enter the number of nodes for first Linked_List ");
+    scanf("%d",&n1);
+    head1=create1(n1);
+
+    printf("Enter the number of nodes for second Linked_List ");
+    scanf("%d",&n2);
+    head2=create2(n2);
+    concatenate(head1,head2);
+    display(head1);
+    return 0;
+}
+
+struct node * create1(int n1)
+{
+   int i;
+   struct node *head1;
+   struct node *p;
+   head1=malloc(sizeof(struct node));
+   if(head1==NULL)
+   {
+     printf("Memory cannot be allocated");
+   }
+   else
+   {
+   printf("\nEnter the data for node : 1 ");
+   scanf("%d",&(head1->data));
+   head1->next=NULL;
+   p=head1;
+   for(i=2;i<=n1;i++)
+   {
+       p->next=malloc(sizeof(struct node));
+       p=p->next;
+
+       printf("\nEnter the data for node : %d ",i);
+       scanf("%d",&(p->data));
+   }
+   p->next=NULL;
+   }
+   return(head1);
+}
+struct node * create2(int n2)
+{
+   int i;
+   struct node *head2;
+   struct node *p;
+   head2=malloc(sizeof(struct node));
+   if(head2==NULL)
+   {
+     printf("Memory cannot be allocated");
+   }
+   else
+   {
+   printf("\nEnter the data for node : 1 ");
+   scanf("%d",&(head2->data));
+   head2->next=NULL;
+   p=head2;
+   for(i=2;i<=n2;i++)
+   {
+       p->next=malloc(sizeof(struct node));
+       p=p->next;
+
+       printf("\nEnter the data for node : %d ",i);
+       scanf("%d",&(p->data));
+   }
+   p->next=NULL;
+   }
+   return(head2);
+}
+
+struct node *concatenate(struct node *head1,struct node *head2)
+ {
+   struct node *temp;
+   if(head1==NULL)
+   {
+       return(head2);
+   }
+   if(head2==NULL)
+   {
+       return(head1);
+   }
+   temp=head1;
+   while(temp->next!=NULL)
+   {
+       temp=temp->next;
+   }
+
+       temp->next=head2;
+       return(head1);
+ }
+
+
+void display(struct node* head1)
+{
+    struct node *p;
+    printf("\n----Data stored in linked list----\n");
+    p=head1;
+    while(p!=NULL)
+    {
+        printf("\t%d",p->data);
+        p=p->next;
+    }
+}
