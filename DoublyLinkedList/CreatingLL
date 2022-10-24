@@ -1,0 +1,66 @@
+//Creation
+#include<stdio.h>
+#include<stdlib.h>
+struct node *create(int);
+void display (struct node *);
+
+struct node
+{
+    int data;
+    struct node *prev;
+    struct node *next;
+};
+
+int main()
+{
+    struct node *head;
+    int n;
+    printf("Enter the number of nodes ");
+    scanf("%d",&n);
+    head=create(n);
+    display(head);
+    return 0;
+}
+
+struct node* create(int n)
+{
+    struct node * head,*temp;
+    int i;
+    head=malloc(sizeof(struct node));
+    printf("Enter the data for node: 1 ");
+    scanf("%d",&(head->data));
+    head->prev=NULL;
+    head->next=NULL;
+    temp=head;
+
+    for(i=2;i<=n;i++)
+    {
+        temp->next=malloc(sizeof(struct node));
+        (temp->next)->prev=temp;
+        temp=temp->next;
+        printf("Enter the data for node: %d ",i);
+        scanf("%d",&(temp->data));
+    }
+
+        temp->next=NULL;
+        return(head);
+}
+
+void display (struct node *head)
+{
+    struct node *temp,*rev;
+    temp=head;
+    printf("\nForward Sequence ");
+    while(temp!=NULL)
+    {
+        printf("\t%d",(temp->data));
+        rev=temp;
+        temp=temp->next;
+    }
+    printf("\nReverse Sequence ");
+    while(rev!=NULL)
+    {
+        printf("\t%d",(rev->data));
+        rev=rev->prev;
+    }
+}
