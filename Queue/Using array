@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include<stdlib.h>
+int enqueue();
+void dequeue();
+void display();
+int queue[50];
+int max=50;
+int rear=-1;
+int front=-1;
+ void main()
+ {
+     int choice;
+     printf("Enter your choice \n1:Enqueue\n 2:Dequeue\n 3:Display\n 4:Exit\n");
+     while(1)
+     {
+         printf("\nEnter your choice ");
+         scanf("%d",&choice);
+
+         switch(choice)
+         {
+         case 1:
+            {
+                enqueue();
+               break;
+            }
+         case 2:
+            {
+                dequeue();
+                break;
+            }
+         case 3:
+            {
+                display();
+                break;
+            }
+         case 4:
+            {
+                exit(1);
+                break;
+            }
+         default:
+            {
+                printf("\nEnter the valid operation ");
+            }
+
+         }
+     }
+ }
+ int enqueue()
+ {
+     int data;
+     if(rear==max-1)
+     {
+         printf("Queue is overflow");
+     }
+     else
+     {
+         if(rear==-1)
+           {
+               front=0;
+           }
+         printf("\nEnter your data enqueue operation : ");
+         scanf("%d",&data);
+         rear=rear+1;
+         queue[rear]=data;
+     }
+     return 0;
+ }
+
+void dequeue()
+ {
+     if(front==-1&&front>rear)
+        printf("Queue is Empty i.e. Underflow condition has reached ");
+     else
+     {
+         printf("\nDequeued data is %d ",queue[front]);
+         front=front+1;
+     }
+ }
+
+ void display()
+ {
+     int i,data;
+     if(front==-1&&front>rear)
+        printf("Queue is Empty i.e. Underflow condition has reached ");
+     else
+     {
+         printf("\nElements of the Queue are:  ");
+         for(i=front;i<=rear;i++)
+         {
+             printf("\t%d",queue[i]);
+
+         }
+     }
+ }
