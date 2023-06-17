@@ -1,0 +1,93 @@
+#include <stdio.h>
+void push(void);
+void pop(void);
+void display(void);
+int stack[50],choice,max=50,Top,x,i;
+
+int main()
+{
+    Top=-1;
+    printf("Select One operator from the Following");
+    printf("\n 1-Push,\n 2-Pop,\n 3-Display,\n 4-Exit");
+    while(1)
+    {
+        printf("\n Enter the choice ");
+        scanf("%d",&choice);
+
+        switch(choice)
+        {
+        case 1:
+            {
+                push();
+                break;
+            }
+        case 2:
+            {
+                pop();
+                break;
+            }
+        case 3:
+            {
+                display();
+                break;
+            }
+        case 4:
+            {
+                printf("Exit Point");
+                exit(0);
+                break;
+            }
+        default:
+            {
+                printf("Enter a valid choice");
+            }
+        }
+    }
+
+    return 0;
+}
+
+void push()
+{
+    if (Top==max-1)
+    {
+        printf("Stack is over flow");
+    }
+    else
+    {
+        Top++;
+        printf("Enter a value should be pushed ");
+        scanf("%d",&x);
+        stack[Top]=x;
+    }
+}
+
+void pop()
+{
+    if(Top==-1)
+    {
+        printf("Stack is UnderFlow");
+    }
+    else
+    {
+        printf("The popped element is %d",stack[Top]);
+        Top--;
+    }
+}
+
+void display()
+{
+    if(Top>=0)
+    {
+        printf("The elements in stack");
+        for(i=Top;i>=0;i--)
+        {
+            printf("\n %d",stack[i]);
+        }
+    }
+    else
+    {
+        printf("The Stack is Empty");
+    }
+}
+
